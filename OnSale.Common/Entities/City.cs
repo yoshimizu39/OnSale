@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace OnSale.Common.Entities
 {
-    public class Country
+    public class City
     {
         public int Id { get; set; }
 
@@ -14,11 +15,10 @@ namespace OnSale.Common.Entities
         [Required]
         public string Name { get; set; }
 
-        public ICollection<Department> Departments { get; set; }
-
-        [DisplayName("Departments Number")]
-        public int DepartmentsNumber => Departments == null ? 0 : Departments.Count;
-
+        [JsonIgnore]
+        [NotMapped]
+        public int IdDeparment { get; set; }
     }
+
 
 }
