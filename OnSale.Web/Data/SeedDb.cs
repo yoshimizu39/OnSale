@@ -26,7 +26,7 @@ namespace OnSale.Web.Data
             await _context.Database.EnsureCreatedAsync(); //si no hay DB esta lìnea de còdigo la crea
             await CheckCountriesAsync();
             await CheckRolesAsync();
-            await CheckUserAsync("2020", "Yoshi", "Muñoz Shimizu", "yoshimizu39@outlook.es.com", "955221095", "Urb. Lima D-12", UserType.Admin);
+            await CheckUserAsync("2020", "Yoshi", "Muñoz Shimizu", "yoshimizu39@outlook.es", "955221095", "Urb. Lima D-12", UserType.Admin);
 
         }
 

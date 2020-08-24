@@ -2,7 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using OnSale.Web.Data;
 using OnSale.Web.Data.Entities;
- using System.Threading.Tasks;
+using OnSale.Web.Models;
+using System.Threading.Tasks;
 
 namespace OnSale.Web.Helpers
 {
@@ -11,14 +12,18 @@ namespace OnSale.Web.Helpers
         private readonly DataContext _context;
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly SignInManager<User> _signInManager;
 
         //UserManager administra los user de la Tabla Users
         //RoleManager administra los roles de la clase IdentityRole
-        public UserHelper(DataContext context, UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
+        //SignInManager clase que permite loguear y desloguear
+        public UserHelper(DataContext context, UserManager<User> userManager, RoleManager<IdentityRole> roleManager,
+                          SignInManager<User> signInManager)
         {
             _context = context;
             _userManager = userManager;
             _roleManager = roleManager;
+            _signInManager = signInManager;
         }
 
         public async Task<IdentityResult> AddUserAsync(User user, string password)
@@ -54,6 +59,26 @@ namespace OnSale.Web.Helpers
         {
             return await _userManager.IsInRoleAsync(user, roleName);
         }
+
+        public async Task<SignInResult> LoginAsync(LoginViewModel model)
+        {
+            return await _signInManager.PasswordSignInAsync(
+                model.Username,
+                model.Password,
+                model.RememberMe,
+                false); //paràmetro que bloquea la sesiòn despuès de tres intentos siempre y cuando este en true
+        }
+
+        public async Task LogoutAsync()
+        {
+            await _signInManager.SignOutAsync();
+        }
+
+        public async Task<SignInResult> ValidatePasswordAsync(User user, string password)
+        {
+            return await _signInManager.CheckPasswordSignInAsync(user, password, false);
+        }
+
     }
 
 }
