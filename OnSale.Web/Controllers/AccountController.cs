@@ -17,6 +17,12 @@ namespace OnSale.Web.Controllers
             _userHelper = userHelper;
         }
 
+        public IActionResult NotAuthorized()
+        {
+            return View();
+        }
+
+
         public IActionResult Login()
         {
             //si esta logueado nos envia al index
