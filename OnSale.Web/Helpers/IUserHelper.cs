@@ -27,5 +27,12 @@ namespace OnSale.Web.Helpers
 
         Task<User> AddUserAsync(AddUserViewModel model, Guid imageId, UserType userType);
 
+        Task<IdentityResult> ChangePasswordAsync(User user, string oldPassword, string newPassword);
+
+        Task<IdentityResult> UpdateUserAsync(User user);
+
+        Task<User> GetUserAsync(Guid userId);
+
+
     }
 }
