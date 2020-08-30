@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
@@ -18,6 +11,8 @@ using Microsoft.IdentityModel.Tokens;
 using OnSale.Web.Data;
 using OnSale.Web.Data.Entities;
 using OnSale.Web.Helpers;
+using System.Globalization;
+using System.Text;
 
 namespace OnSale.Web
 {
@@ -48,13 +43,17 @@ namespace OnSale.Web
             //vamos a trabajar con la tabla User y con los roles estàndar de la aplicaciòn
             services.AddIdentity<User, IdentityRole>(cfg =>
             {
+                cfg.Tokens.AuthenticatorTokenProvider = TokenOptions.DefaultAuthenticatorProvider; //OBTENEMOS TOKEN
+                cfg.SignIn.RequireConfirmedEmail = true; //Requiere un email de confirmaciòn
                 cfg.User.RequireUniqueEmail = true;
                 cfg.Password.RequireDigit = false;
                 cfg.Password.RequiredUniqueChars = 0;
                 cfg.Password.RequireLowercase = false;
                 cfg.Password.RequireNonAlphanumeric = false;
                 cfg.Password.RequireUppercase = false;
-            }).AddEntityFrameworkStores<DataContext>();
+            })
+                .AddDefaultTokenProviders() //permite que funcione la configuration del token
+                .AddEntityFrameworkStores<DataContext>();
 
             services.AddAuthentication().AddCookie().AddJwtBearer(cfg => //utilizamos token Bearer
             {
@@ -78,6 +77,7 @@ namespace OnSale.Web
             services.AddScoped<IConverterHelper, ConverterHelper>();
             services.AddScoped<ICombosHelper, CombosHelper>();
             services.AddScoped<IUserHelper, UserHelper>();
+            services.AddScoped<IMailHelper, MailHelper>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
