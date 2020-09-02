@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29911.98
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnSale.Common", "OnSale.Common\OnSale.Common.csproj", "{BC4A9634-8FAE-43F3-AD58-7A127F752C45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnSale.Common", "OnSale.Common\OnSale.Common.csproj", "{BC4A9634-8FAE-43F3-AD58-7A127F752C45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnSale.Web", "OnSale.Web\OnSale.Web.csproj", "{610909A0-C4AA-4401-B5A5-088EBB8CD708}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnSale.Web", "OnSale.Web\OnSale.Web.csproj", "{610909A0-C4AA-4401-B5A5-088EBB8CD708}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnSale.Prism", "OnSale.Prism\OnSale.Prism\OnSale.Prism.csproj", "{77ED3909-82A2-447C-9338-F0AFF1C839C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnSale.Prism.Android", "OnSale.Prism\OnSale.Prism.Android\OnSale.Prism.Android.csproj", "{47F27D79-E82C-4EEA-B49D-90AEED32D36F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,16 @@ Global
 		{610909A0-C4AA-4401-B5A5-088EBB8CD708}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{610909A0-C4AA-4401-B5A5-088EBB8CD708}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{610909A0-C4AA-4401-B5A5-088EBB8CD708}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77ED3909-82A2-447C-9338-F0AFF1C839C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77ED3909-82A2-447C-9338-F0AFF1C839C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77ED3909-82A2-447C-9338-F0AFF1C839C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77ED3909-82A2-447C-9338-F0AFF1C839C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47F27D79-E82C-4EEA-B49D-90AEED32D36F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47F27D79-E82C-4EEA-B49D-90AEED32D36F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47F27D79-E82C-4EEA-B49D-90AEED32D36F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{47F27D79-E82C-4EEA-B49D-90AEED32D36F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47F27D79-E82C-4EEA-B49D-90AEED32D36F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47F27D79-E82C-4EEA-B49D-90AEED32D36F}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
